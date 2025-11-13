@@ -22,20 +22,17 @@ The solution integrates:
 
 ---
 
-## 📁 Project Structure
+```plaintext
+📁 Project Structure
 
-
-'''
 Network_AI_Project/
 │
-├── 📄 packet_data_generator.py      # Creates synthetic packet dataset
-├── 📄 train_model.py                # Trains neural network model
-├── 📄 realtime_demo.py              # Real-time prediction simulation
-├── 📄 requirements.txt              # Python dependencies
-├── 📄 LICENSE                       # MIT license
-├── 📄 README.md                     # Documentation
+├── packet_data_generator.py
+├── train_model.py
+├── realtime_demo.py
+├── requirements.txt
 │
-├── 📦 archive/                      # Model, dataset, metrics
+├── archive/
 │   ├── network_error_model.h5
 │   ├── scaler.pkl
 │   ├── feature_columns.json
@@ -48,16 +45,26 @@ Network_AI_Project/
 │   ├── roc_curve.png
 │   └── training_history.png
 │
-├── 🖼 images/                       # Visualization images
-│   ├── training_history.png
+├── images/
 │   ├── confusion_matrix.png
-│   └── roc_curve.png
+│   ├── roc_curve.png
+│   └── training_history.png
 │
-└── 📂 runs/                         # Optional best-run folders
-    └── 2025xxxx_xxxxxx/
+└── runs/
+    └── 2025xxxxx/
+        ├── network_error_model.h5
+        ├── scaler.pkl
+        ├── packet_data_full.csv
+        └── training_history.png
+
 
 ---
-'''
+
+# ✔ VERY IMPORTANT — READ THIS  
+The VERY FIRST and VERY LAST lines MUST be:
+
+```plaintext
+
 
 ## 🚀 Installation  
 
