@@ -22,8 +22,9 @@ The solution integrates:
 
 ---
 
-```plaintext
-📁 Project Structure
+## 📁 Project Structure
+
+```
 
 Network_AI_Project/
 │
@@ -58,12 +59,8 @@ Network_AI_Project/
         └── training_history.png
 
 
----
 
-# ✔ VERY IMPORTANT — READ THIS  
-The VERY FIRST and VERY LAST lines MUST be:
-
-```plaintext
+```
 
 
 ## 🚀 Installation  
