@@ -1,207 +1,137 @@
-Real-Time Packet-Level AI System for Network Error Prediction
+# Real-Time Packet-Level AI System for Network Error Prediction  
+### Author: Atri Pramanik (23BCE0200)  
+### Course: Network Systems & AI Integration – Lab Project  
 
-Author: Atri Pramanik (23BCE0200)
-Course: Network Systems and AI Integration – Lab Project
+---
 
-Overview
+## 📘 Overview  
 
-This project implements a real-time AI-based packet-level network error prediction system.
-It predicts whether a network packet is normal or erroneous using:
+This project implements a **real-time AI-based packet-level network error prediction system** using:  
+- Python  
+- TensorFlow / Keras  
+- Scikit-learn  
+- Synthetic dataset generation  
 
-Python
+The system predicts whether an incoming packet will be **ERRONEOUS** or **NORMAL**, based on 12 engineered network features including packet size, latency, queue depth, congestion score, protocol type, and more.
 
-TensorFlow / Keras
+The solution integrates:  
+✔ Dataset generator  
+✔ Neural network training pipeline  
+✔ Real-time inference simulator  
+✔ Result visualizations and metrics  
 
-Scikit-learn
+---
 
-Synthetic dataset generation
+## 🏗 Project Structure  
 
-Real-time inference simulation
-
-The project includes dataset generation, neural network training, model evaluation, visualization, and real-time inference pipeline.
-
-Project Structure
 Network_AI_Project/
 │
-├── archive/                         
-│   ├── network_error_model.h5
-│   ├── scaler.pkl
-│   ├── feature_columns.json
-│   ├── model_metrics.json
-│   ├── packet_data_train.csv
-│   ├── packet_data_test.csv
-│   ├── packet_data_val.csv
-│   ├── packet_data_full.csv
-│   ├── confusion_matrix.png
-│   ├── roc_curve.png
-│   └── training_history.png
+├── packet_data_generator.py # Creates synthetic dataset
+├── train_model.py # Trains neural network model
+├── realtime_demo.py # Real-time prediction simulation
+├── requirements.txt # Python dependencies
+├── LICENSE # MIT License
+├── README.md # You are here
 │
-├── images/                          
-│   ├── training_history.png
-│   ├── confusion_matrix.png
-│   └── roc_curve.png
+├── archive/
+│ └── best_run/
+│ ├── network_error_model.h5
+│ ├── scaler.pkl
+│ ├── feature_columns.json
+│ ├── model_metrics.json
+│ ├── confusion_matrix.png
+│ ├── roc_curve.png
+│ ├── training_history.png
 │
-├── runs/                            
-│   └── 2025.../                     
-│
-├── packet_data_generator.py         
-├── train_model.py                   
-├── realtime_demo.py                 
-├── requirements.txt                 
-└── README.md                        
+└── images/ # Additional visualizations
 
-Features
-Synthetic Packet Dataset Generator
 
-Generates 100,000 realistic packet samples.
+---
 
-Models queueing delays, congestion levels, burst errors.
+## 🚀 Installation  
 
-Uses 12 engineered numerical features.
+### **1. Clone Repository**
 
-Automatically creates train/validation/test splits.
 
-Neural Network Model
+git clone https://github.com/heidan-varjo/Network_AI_Project
 
-Architecture: Dense layers 128 → 64 → 32 → 1.
-
-Dropout regularization to reduce overfitting.
-
-Binary classification using sigmoid activation.
-
-Performance:
-
-Accuracy: 94.8%
-
-Error-class recall: 90.4%
-
-F1-score: 91.7%
-
-ROC-AUC: 0.973
-
-Real-Time Inference Simulation
-
-Loads trained model and scaler.
-
-Predicts packet error probability.
-
-Average inference time: about 1.2 ms on CPU.
-
-Demonstrates CPU-optimized real-time prediction.
-
-Installation
-1. Clone the repository
-git clone https://github.com/yourusername/Network_AI_Project.git
 cd Network_AI_Project
 
-2. Create a virtual environment (optional)
 
-Windows:
-
-python -m venv venv
-venv\Scripts\activate
+### **2. Create Virtual Environment**
 
 
-Linux/Mac:
+python -m venv .venv
+..venv\Scripts\activate # For Windows PowerShell
 
-python3 -m venv venv
-source venv/bin/activate
 
-3. Install required libraries
+### **3. Install Dependencies**
+
+
 pip install -r requirements.txt
 
-How to Run
-1. Generate the dataset
-python packet_data_generator.py
+
+---
+
+## 🧪 1. Generate Dataset
 
 
-This generates:
 
-packet_data_train.csv
-
-packet_data_val.csv
-
-packet_data_test.csv
-
-packet_data_full.csv
-
-feature_columns.json
-
-Files are stored inside archive/.
-
-2. Train the model
-python train_model.py
+python packet_data_generator.py --total_samples 100000
 
 
-This produces:
+Output files will appear in `archive/best_run/` after processing.
 
-network_error_model.h5
+---
 
-scaler.pkl
+## 📘 2. Train the Model
 
-model_metrics.json
 
-training_history.png
 
-confusion_matrix.png
+python train_model.py --epochs 50 --batch-size 32
 
-roc_curve.png
 
-All stored in archive/.
+This will produce:  
+- network_error_model.h5  
+- confusion_matrix.png  
+- roc_curve.png  
+- training_history.png  
+- scaler.pkl  
+- feature_columns.json  
 
-3. Run the real-time prediction demo
+---
+
+## ⚡ 3. Real-Time Prediction Demo  
+
+
+
 python realtime_demo.py
 
 
-Shows prediction probability and packet latency behavior.
+The script loads the model + scaler and predicts packet errors with **~1.2 ms latency per packet**.
 
-Example Prediction Code
-import tensorflow as tf
-import numpy as np
-import json, pickle
+---
 
-model = tf.keras.models.load_model("archive/network_error_model.h5")
-scaler = pickle.load(open("archive/scaler.pkl", "rb"))
-cols = json.load(open("archive/feature_columns.json"))
+## 📊 Performance Summary  
 
-def predict(features):
-    x = np.array([[features[c] for c in cols]])
-    x_scaled = scaler.transform(x)
-    prob = model.predict(x_scaled)[0, 0]
-    return prob
+- Test accuracy: **94.8%**  
+- Precision (error class): **93.1%**  
+- Recall (error class): **90.4%**  
+- F1 Score: **91.7%**  
+- ROC–AUC: **0.973**  
+- Real-time inference delay: **~1.2 ms**  
 
-Requirements
+---
 
-Dependencies inside requirements.txt:
+## 📝 License  
 
-tensorflow==2.10.0
+This project is licensed under the **MIT License**.
 
-numpy
+---
 
-pandas
+## 👤 Author  
 
-scikit-learn
-
-matplotlib
-
-seaborn
-
-Screenshots / Visualizations
-
-All key plots are stored in:
-
-images/
-
-archive/
-
-License
-
-This project is licensed under the MIT License.
-You may modify and use the code for academic or personal work.
-
-Author
-
-Atri Pramanik
-Dept. of Computer Science
-VIT Vellore
-Email: atri.pramanik2023@vitstudent.ac.in
+**Atri Pramanik**  
+Reg No: 23BCE0200  
+B.Tech CSE Core  
+Vellore Institute of Technology (VIT), Vellore  
