@@ -25,7 +25,7 @@ The solution integrates:
 ## 📁 Project Structure
 
 
-
+'''
 Network_AI_Project/
 │
 ├── 📄 packet_data_generator.py      # Creates synthetic packet dataset
@@ -57,6 +57,7 @@ Network_AI_Project/
     └── 2025xxxx_xxxxxx/
 
 ---
+'''
 
 ## 🚀 Installation  
 
@@ -145,3 +146,4 @@ This project is licensed under the **MIT License**.
 Reg No: 23BCE0200  
 B.Tech CSE Core  
 Vellore Institute of Technology (VIT), Vellore  
+
