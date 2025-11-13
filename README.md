@@ -22,29 +22,39 @@ The solution integrates:
 
 ---
 
-## 🏗 Project Structure  
+## 📁 Project Structure
+
+
 
 Network_AI_Project/
 │
-├── packet_data_generator.py # Creates synthetic dataset
-├── train_model.py # Trains neural network model
-├── realtime_demo.py # Real-time prediction simulation
-├── requirements.txt # Python dependencies
-├── LICENSE # MIT License
-├── README.md # You are here
+├── 📄 packet_data_generator.py      # Creates synthetic packet dataset
+├── 📄 train_model.py                # Trains neural network model
+├── 📄 realtime_demo.py              # Real-time prediction simulation
+├── 📄 requirements.txt              # Python dependencies
+├── 📄 LICENSE                       # MIT license
+├── 📄 README.md                     # Documentation
 │
-├── archive/
-│ └── best_run/
-│ ├── network_error_model.h5
-│ ├── scaler.pkl
-│ ├── feature_columns.json
-│ ├── model_metrics.json
-│ ├── confusion_matrix.png
-│ ├── roc_curve.png
-│ ├── training_history.png
+├── 📦 archive/                      # Model, dataset, metrics
+│   ├── network_error_model.h5
+│   ├── scaler.pkl
+│   ├── feature_columns.json
+│   ├── model_metrics.json
+│   ├── packet_data_train.csv
+│   ├── packet_data_test.csv
+│   ├── packet_data_val.csv
+│   ├── packet_data_full.csv
+│   ├── confusion_matrix.png
+│   ├── roc_curve.png
+│   └── training_history.png
 │
-└── images/ # Additional visualizations
-
+├── 🖼 images/                       # Visualization images
+│   ├── training_history.png
+│   ├── confusion_matrix.png
+│   └── roc_curve.png
+│
+└── 📂 runs/                         # Optional best-run folders
+    └── 2025xxxx_xxxxxx/
 
 ---
 
